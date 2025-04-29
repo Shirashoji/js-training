@@ -26,7 +26,6 @@
     "@ionic/react-router": "^8.5.5",
     "@nivo/bar": "^0.91.0",
     "@nivo/line": "^0.91.0",
-    "@nivo/network": "^0.91.0",
     "@nivo/parallel-coordinates": "^0.91.0",
     "@nivo/scatterplot": "^0.91.0",
     "@nivo/sunburst": "^0.91.0",
