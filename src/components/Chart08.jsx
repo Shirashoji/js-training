@@ -67,7 +67,7 @@ const Chart = ({ data }) => {
         typeof link.target === "string" ? nodeById[link.target] : link.target,
     }));
 
-    // Create force simulation
+    // Create force simulation with stronger spring force
     const simulation = d3
       .forceSimulation(data.nodes)
       .force(
@@ -75,12 +75,13 @@ const Chart = ({ data }) => {
         d3
           .forceLink(links)
           .id((d) => d.id)
-          .distance(30),
+          .distance(20) // Reduced distance for tighter connections
+          .strength(2), // Increased strength (default is 0.7)
       )
-      .force("charge", d3.forceManyBody().strength(-100))
+      .force("charge", d3.forceManyBody().strength(-70)) // Increased repulsion
       .force("center", d3.forceCenter(width / 2, height / 2))
-      .force("x", d3.forceX(width / 2).strength(0.1))
-      .force("y", d3.forceY(height / 2).strength(0.1));
+      .force("x", d3.forceX(width / 2).strength(0.05)) // Reduced to allow links to dominate
+      .force("y", d3.forceY(height / 2).strength(0.05)); // Reduced to allow links to dominate
 
     // Create links
     const link = svg
